@@ -3,17 +3,7 @@
     {
       "id": "1",
       "nazev": "Bytvový dům",
-      "popis": "Sigma",
-      "obrazky": [
-        "PraceImg1.png",
-        "PraceImg2.png",
-        "PraceImg3.png"
-      ]
-    },
-    {
-      "id": "2",
-      "nazev": "Bytový dům",
-      "popis": "Ligma",
+      "popis": "Na Rovnosti 2250/8, Praha 3 - žižkov",
       "obrazky": [
         "PraceImg1.png",
         "PraceImg2.png",
