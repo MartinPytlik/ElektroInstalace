@@ -1,0 +1,611 @@
+/* Univerzální reset stylů */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: "eurostile", sans-serif;
+  line-height: 1.6;
+  color: #333;
+  /*background-color: #000;*/
+  
+}
+#GradientImg {
+  position: absolute; /* Aby se mohl překrývat nad ostatním obsahem */
+  top: 0; /* Nastavení polohy – začíná od vrchu */
+  left: 0; /* Nastavení polohy – začíná zleva */
+  width: 100%; /* Přizpůsobení šířky, aby obrázek překryl celou stránku */
+  z-index: 1000; /* Vysoká hodnota pro zajištění překrytí ostatního obsahu */
+  pointer-events: none; /* Zajistí, že obrázek nebude interaktivní, pokud nepotřebuješ */
+  max-height: 300vh;
+}
+
+body {
+  background-color: black;
+  /*
+  background: 
+  
+    url('Gradient.png'), /* gradient obrázek 
+    black;  fallback barva 
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  position: relative; Nutné pro z-index 
+  z-index: 999; /* Nastavení vrstvy */
+}
+
+/* Header */
+header {
+  background-image: url("HeaderImg2.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 80vh;
+  color: #fff;
+  background-color: black; /* fallback barva pro pozadí */
+  padding: 20px 0;
+  position: relative; /* Nutné pro z-index */
+  z-index: 1; /* Nastavení vrstvy nad body */
+}
+
+nav{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-right: 60px;
+  margin-top: 10px;
+}
+nav ul li {
+  font-size: 25px;         /* Velikost písma */
+}
+#Logo {
+  width: 230px;
+  height: auto;
+}
+.logo{
+  margin-bottom: 150px;
+}
+.Nadpis{
+  font-size: 55px;
+  text-align: center;
+  font-weight: 900;
+  padding: 50px;
+  padding-bottom: 60px;
+  color: white;
+}
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 65px;
+  padding: 0;
+  margin: 0;
+}
+#SipkaRotate{
+  transform: rotate(180deg);
+}
+.arrow-text {
+  display: flex;          
+  align-items: center;    
+  font-size: 20px;
+  gap: 10px;
+  padding: 20px;
+}
+
+.arrow-text img {
+  width: 32px;            
+  height: auto;           
+}
+#Popis{
+  text-align: center;
+}
+#Popis h3{
+  font-size: 24px;
+}
+#Popis p{
+ font-size: 16px;
+}
+#OvladaniSluzby{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.hero {
+  text-align: left;
+  padding: 20px 100px;
+
+}
+.BtnContainer{
+  text-align: center;
+}
+#ZobrazitVseBtn{
+  font-size: 25px;
+  color: white;
+  background-color: brown;
+  padding: 20px 100px;
+  margin-top: 60px;
+}
+header .hero .KonktHeader{
+  margin-bottom: 200px;
+}
+.hero h1 {
+  font-size: 45px;
+  margin: 0 0 20px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin: 0 0 20px;
+}
+
+.hero .button {
+  display: inline-block;
+  padding: 17px 55px;
+  background: #e00;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  font-size: 30px;
+}
+
+/* Služby */
+#sluzby {
+  padding: 50px 20px;
+  /*background: #f4f4f4;*/
+  text-align: center;
+}
+
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+}
+.ZasuvkaIcon{
+  margin: 20px 0px;
+}
+#sluzby h3{
+  margin: 0px 0px 20px 0px;
+  font-size: 25px;
+}
+#sluzby p{
+  margin: 20px 0px;
+  font-size: 16px;
+  padding-right: 60px;
+  padding-left: 60px;
+}
+
+.service {
+  padding: 20px;
+  background-color: rgb(15, 15, 15);
+  color: white;
+  flex: 1 1 calc(33.333% - 40px);
+  max-width: calc(25% - 40px);
+}
+
+
+/* Ukázky prací */
+#ukazky-praci {
+  padding: 50px 20px;
+  /*background: black;*/
+  color: white;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.gallery-item {
+  flex: 1 1 calc(33.333% - 40px);
+  max-width: calc(28% - 40px);
+}
+
+.gallery-item img {
+  width: 100%;
+  display: block;
+}
+
+/* Kontakt */
+#kontakt {
+  padding: 50px 20px;
+   background-image: url('MainImg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  min-height: 50vh;
+  margin-bottom: 80px;
+}
+#kontakt .contact-left{
+ text-align: right;
+}
+.contact p strong{
+  font-size: 28px;
+}
+.contact p{
+  font-size: 20px;
+}
+.contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 175px; 
+  align-items: start; 
+  vertical-align: top;
+}
+
+.contact-left, .contact-right {
+  display: flex;
+  flex-direction: column; 
+  gap: 15px; /* Mezera mezi prvky ve sloupci */
+  justify-content: flex-end;
+}
+
+.email-link {
+  display: flex;           /* Použijeme flexbox pro zarovnání */
+  align-items: center;     /* Vertikálně zarovnáme ikonu a text */
+  text-decoration: none;   /* Odstraní podtržení */
+}
+
+.email-icon {
+  margin-right: 20px;      /* Mezera mezi ikonou a textem */
+}
+
+.email-icon img {
+  width: 40px;             /* Nastavíme velikost ikony */
+  height: auto;            /* Zachováme původní poměr stran */
+}
+
+.email-text {
+  font-size: 30px;   
+  color: white;       /* Nastavíme velikost textu, pokud je to potřeba */
+}
+.phone-link {
+  display: flex;           /* Použijeme flexbox pro zarovnání */
+  align-items: center;     /* Vertikálně zarovnáme ikonu a text */
+  text-decoration: none; 
+    margin-bottom: 75px;
+}
+
+.phone-icon {
+  margin-right: 20px;      /* Mezera mezi ikonou a textem */
+}
+
+.phone-icon img {
+  width: 40px;             /* Nastavíme velikost ikony */
+  height: auto;            /* Zachováme původní poměr stran */
+}
+
+.phone-text {
+  font-size: 30px;
+  color: white;         /* Nastavíme velikost textu, pokud je to potřeba */
+}
+
+
+
+/* Footer */
+footer {
+  background: #0d0d0d;
+  color: #fff;
+  padding: 40px 0;          /* Větší padding pro lepší čitelnost */
+  text-align: center;
+  margin-bottom: 60px;
+}
+#CreaterTag{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#CreaterTag p {
+  margin-bottom: 30px;
+  color: white;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;  /* Rozprostře sloupce rovnoměrně */
+  align-items: center;             /* Vertikální zarovnání všech sloupců */
+  gap: 20px;                       /* Mezera mezi sloupci */
+  padding: 0 20px;
+  flex-wrap: wrap;                 /* Přizpůsobí obsah na menších obrazovkách */
+}
+
+.footer-container > div {                        /* Každý sloupec zabírá stejný prostor */
+  min-width: 200px;                /* Minimální šířka pro každý sloupec */
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.footer-links,
+.footer-social {
+  display: flex;
+  flex-direction: column;          /* Odkazy budou pod sebou */
+  gap: 10px;
+  
+}
+.footer-social{
+  text-align: center;
+}
+.footer-links a,
+.footer-social a {
+  text-decoration: none;
+  color: #fff;
+}
+.footer-links a{
+  text-decoration: underline;
+}
+
+.FooterAdresa h5 {
+  font-size: 18px;
+  
+}
+
+/* Nastavení kontaktů */
+.contact-email, .contact-phone {
+  display: flex;           /* Flexbox pro zarovnání obsahu */
+  align-items: center;     /* Vertikální zarovnání */
+  text-decoration: none;   /* Bez podtržení odkazů */
+  margin-bottom: 20px;     /* Větší mezera pod odkazem */
+}
+
+.contact-email-icon, .contact-phone-icon {
+  margin-right: 15px;      /* Mezera mezi ikonou a textem */
+}
+
+.contact-email-icon img, .contact-phone-icon img {
+  width: 30px;             /* Zmenšená velikost ikony */
+  height: auto;            /* Zachování poměru stran */
+}
+
+.contact-email-text, .contact-phone-text {
+  font-size: 18px;         /* Zmenšená velikost textu */
+  color: white;            /* Barva textu */
+}
+
+
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+}
+  /* Úpravy pro služby */
+  .services {
+    flex-direction: column;   /* Změna rozvržení na sloupec */
+    gap: 30px;                /* Menší mezera mezi položkami */
+  }
+
+  .service {
+    flex: 1 1 100%;           /* Každá služba bude mít 100% šířky */
+    max-width: 100%;          /* Maximální šířka 100% */
+    padding: 15px;            /* Menší padding */
+  }
+
+  /* Úpravy pro galerii */
+  .gallery {
+    flex-direction: column;   /* Změna rozvržení na sloupec */
+    gap: 30px;                /* Menší mezera mezi obrázky */
+  }
+
+  .gallery-item {
+    flex: 1 1 100%;           /* Každý obrázek bude mít 100% šířky */
+    max-width: 100%;          /* Maximální šířka 100% */
+  }
+
+  /* Úpravy pro hlavičku */
+  .header-container {
+    flex-direction: column;   /* Změna na vertikální rozložení */
+    text-align: center;       /* Zarovnání textu na střed */
+    margin-top: 20px;         /* Trochu prostoru nahoře */
+  }
+
+ 
+  /* Úpravy pro kontaktní sekci */
+  .contact {
+    display: grid;            /* Změna na grid */
+    grid-template-columns: 1fr; /* Jeden sloupec */
+    gap: 20px;                /* Menší mezera mezi sekcemi */
+  }
+
+  .contact-left, .contact-right {
+    text-align: center;       /* Zarovnání textu na střed */
+    gap: 10px;                /* Menší mezera mezi položkami */
+  }
+
+  .contact p {
+    font-size: 18px;          /* Menší písmo pro lepší čitelnost */
+  }
+
+  /* Úpravy pro tlačítko "Zobrazit vše" */
+  #ZobrazitVseBtn {
+    padding: 15px 50px;       /* Menší padding pro tlačítko */
+    font-size: 20px;          /* Menší písmo */
+  }
+
+  /* Úpravy pro hrdinský obrázek a text */
+  
+
+  .hero h1 {
+    font-size: 36px;          /* Menší nadpis */
+  }
+
+  .hero .button {
+    font-size: 24px;          /* Menší písmo pro tlačítko */
+    padding: 15px 40px;       /* Menší padding */
+  }
+
+  /* Úpravy pro hlavní nadpisy */
+  .Nadpis {
+    font-size: 40px;          /* Menší font pro nadpisy */
+    padding: 30px 0;          /* Menší padding */
+  }
+  
+  /* Úpravy pro navigační odkazy */
+  nav ul li {
+    font-size: 20px;          /* Menší písmo pro navigaci */
+  }
+}
+@media (max-width: 950px) {
+  .contact {
+    display: flex;
+    flex-direction: column; /* Sloupce se spojí do jednoho */
+    align-items: center; /* Zarovná obsah na střed */
+    gap: 20px; /* Zmenšíme mezeru mezi elementy */
+  }
+
+  #kontakt .contact .contact-left, #kontakt .contact .contact-right {
+    text-align: center; /* Text bude zarovnaný na střed */
+  }
+}
+@media (max-width: 600px) {
+  /* Zajistíme, že vše v header bude na střed */
+  html, body, header {
+    text-align: center;
+  }
+  header .hero{
+    text-align: center;
+    padding: 0;
+  }
+
+  /* Zajistíme, že navigace je správně zarovnaná na střed */
+  .header-container nav {
+    display: flex;
+    justify-content: center; /* Toto zarovná navigaci na střed */
+    width: 100%;
+  }
+
+  /* Upravené nastavení pro seznam položek v navigaci */
+  .header-container nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Zarovná jednotlivé položky na střed */
+    gap: 30px;
+  }
+
+  /* Pokud jsou v navigaci odkazy, budou také na střed */
+  .header-container nav a {
+    color: white;
+    text-decoration: none;
+  }
+
+  /* Upravení header pro menší obrazovky */
+  header {
+    padding: 20px 0;
+    text-align: center;
+  }
+
+  /* Nastavení pro nadpis v hlavičce */
+  header h1 {
+    font-size: 32px;
+    text-align: center; /* Ujistíme se, že nadpis bude na střed */
+    margin-bottom: 10px;
+  }
+  #email1, #phone1{
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 900px) {
+  /* Úprava galerie: obrázky pod sebou a na střed */
+  .gallery {
+    display: flex;
+    flex-direction: column; /* Zarovnáno pod sebe */
+    align-items: center;    /* Středování položek */
+    gap: 20px;              /* Mezera mezi obrázky */
+  }
+
+  .gallery-item {
+    width: 100%;            /* Každý obrázek zabírá celou šířku */
+    max-width: 400px;       /* Maximální šířka obrázků */
+  }
+
+  /* Obrázky v galerii */
+  .gallery-item img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* Ovládání služby pod obrázky */
+  #OvladaniSluzby {
+    display: flex;
+    flex-direction: column;  /* Změna na sloupec pro menší obrazovky */
+    align-items: center;     /* Zarovnání na střed */
+    gap: 20px;               /* Mezera mezi šipkami a popisky */
+    margin-top: 20px;
+  }
+
+  /* Popis pod obrázky */
+  #Popis {
+    text-align: center;      /* Středování textu */
+  }
+
+  #Popis h3 {
+    font-size: 24px;
+  }
+
+  #Popis p {
+    font-size: 16px;
+  }
+
+  /* Ovládání šipek */
+  .arrow-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    gap: 10px;
+  }
+
+  .arrow-text img {
+    width: 32px;
+    height: auto;
+  }
+
+  #ZobrazitVseBtn {
+    padding: 15px 40px;  
+    font-size: 20px;    
+}
+@media (max-width: 1600px) {
+  .service {
+    flex: 1 1 calc(50% - 40px); 
+  }
+}
+@media (max-width: 1300px) {
+   main #sluzby .services.service {
+    flex: 1 1 calc(50% - 40px);/* 2 služby vedle sebe */
+    max-width: calc(50% - 40px); /* Maximální šířka 50% */
+  }
+}
+
+/* Pro obrazovky s šířkou 768px a méně */
+@media (max-width: 768px) {
+  .service {
+    flex: 1 1 100%; /* Každá služba zabere 100% šířky */
+    max-width: 100%; /* Maximální šířka 100% */
+  }
+}
+@media (max-width: 450px) {
+  .service {
+    flex: 1 1 100%;  
+    max-width: 85%;  
+    margin: 0 auto;  
+  }
+  header{
+    height: 90vh;
+  }
+}
+}

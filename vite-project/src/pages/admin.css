@@ -1,0 +1,245 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  /*background-color: #f5f5f5;*/
+  overflow-y: auto; /* Povolit vertikální posouvání */
+}
+
+html, body {
+  height: 100%; /* Zajistit, že body bude mít výšku celé stránky */
+}
+
+.login-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Zajistí správné zarovnání obsahu */
+  width: 100%;
+  padding: 20px; /* Přidáno pro lepší mobilní responzivitu */
+  box-sizing: border-box;
+  margin-top: 200px;
+}
+
+
+.login-container {
+  background-color: #ffffff;
+  padding: 30px 40px; /* Zvýšení paddingu */
+  border-radius: 10px;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  max-width: 500px; /* Maximální šířka na desktopu */
+  width: 100%;
+}
+
+.login-title {
+  font-size: 28px; /* Zvýšení fontu */
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #333333;
+  text-align: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 20px; /* Větší mezery mezi prvky */
+}
+
+.form-label {
+  display: block;
+  font-size: 16px; /* Zvýšení fontu */
+  margin-bottom: 8px;
+  color: #666666;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px; /* Zvýšení paddingu */
+  font-size: 16px; /* Zvýšení fontu */
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  border-color: #007BFF;
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+}
+
+.error-message {
+  color: #ff4d4d;
+  font-size: 16px; /* Zvýšení fontu */
+  margin-top: -10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+/* Preview obrázků */
+.image-preview {
+  display: flex; /* Pokud chcete zobrazit obrázky vedle sebe */
+  flex-wrap: wrap; /* Pokud obrázky přetečou, přesunou se na další řádek */
+  gap: 8px; /* Mezera mezi obrázky */
+  max-width: 100%; /* Omezte velikost kontejneru */
+}
+
+.image-preview img {
+  max-width: 100px; /* Nastavte maximální šířku obrázků */
+  max-height: 100px; /* Nastavte maximální výšku obrázků */
+  object-fit: cover; /* Zajistěte správné oříznutí obrázku */
+  border: 1px solid #ddd; /* Přidání rámečku pro estetiku */
+  border-radius: 4px; /* Zaoblení rohů */
+}
+
+
+.login-button {
+  background-color: #007BFF;
+  color: #ffffff;
+  padding: 12px 18px; /* Zvýšení paddingu */
+  font-size: 16px; /* Zvýšení fontu */
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+.login-button:active {
+  background-color: #003f7f;
+}
+
+.admin-container {
+  background-color: #ffffff;
+  padding: 30px 40px; /* Zvýšení paddingu */
+  border-radius: 10px;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  max-width: 900px; /* Maximální šířka na desktopu */
+  margin: 20px auto;
+  width: 100%;
+}
+
+.admin-title {
+  font-size: 32px; /* Zvýšení fontu */
+  font-weight: bold;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #007BFF;
+}
+
+.admin-message {
+  font-size: 18px; /* Zvýšení fontu */
+  text-align: center;
+  margin-bottom: 25px;
+  color: #666;
+}
+
+.product-list {
+  margin-bottom: 40px;
+}
+
+.product-item {
+  border: 1px solid #ccc;
+  padding: 20px; /* Zvýšení paddingu */
+  border-radius: 6px;
+  margin-bottom: 20px; /* Zvýšení mezery mezi produkty */
+  background-color: #f9f9f9;
+}
+
+.product-item h2 {
+  font-size: 22px; /* Zvýšení fontu */
+  margin-bottom: 10px;
+}
+
+.product-item p {
+  font-size: 16px; /* Zvýšení fontu */
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.product-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px; /* Vzdálenost mezi obrázky */
+  max-width: 100%; /* Zajistí, že obrázky nepřetékají šířku stránky */
+  justify-content: flex-start; /* Zarovná obrázky doleva */
+}
+
+.product-images img {
+  width: 100%; /* Obrázek přizpůsobí šířce svého kontejneru */
+  max-width: 120px; /* Maximální šířka obrázku */
+  max-height: 120px; /* Maximální výška obrázku */
+  object-fit: contain; /* Zachová poměr stran obrázku */
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+
+.product-item button {
+  padding: 10px 15px; /* Zvýšení paddingu */
+  font-size: 16px; /* Zvýšení fontu */
+  color: #fff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 12px;
+  transition: background-color 0.3s;
+}
+
+.product-item button:hover {
+  background-color: #0056b3;
+}
+
+.product-form {
+  margin-top: 25px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.product-form h2 {
+  font-size: 24px; /* Zvýšení fontu */
+  margin-bottom: 18px;
+}
+
+.product-form input[type="text"],
+.product-form input[type="file"] {
+  width: 100%;
+  padding: 12px; /* Zvýšení paddingu */
+  margin-bottom: 20px; /* Zvýšení mezery mezi prvky */
+  font-size: 16px; /* Zvýšení fontu */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.product-form input[type="text"]:focus,
+.product-form input[type="file"]:focus {
+  border-color: #007BFF;
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+  .login-container, .admin-container {
+    padding: 20px; /* Zmenšení paddingu pro menší obrazovky */
+  }
+
+  .login-title, .admin-title {
+    font-size: 24px; /* Menší font pro mobil */
+  }
+
+  .product-item h2 {
+    font-size: 20px;
+  }
+
+  .product-item button {
+    font-size: 14px;
+  }
+}
