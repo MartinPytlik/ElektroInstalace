@@ -6,22 +6,18 @@ import cors from 'cors';
 import { fileURLToPath } from 'url';
 import { log } from 'console';
 
-// Initialize Express
+
 const app = express();
 const port = 5003;
 
-// Define __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-app.use(express.json()); // Middleware pro parsování JSON
+app.use(express.json()); 
 
-// Enable CORS for cross-origin requests (needed for frontend-backend communication)
 app.use(cors());
 
-// Serve static files from 'uploads' folder
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Set up Multer for file uploading
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -34,12 +30,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-// Ensure the uploads folder exists
 if (!fs.existsSync('uploads')) {
   fs.mkdirSync('uploads');
 }
 
-// Function to read and write to db.json
 const readDb = () => {
   if (fs.existsSync('db.json')) {
 
@@ -74,7 +68,6 @@ app.post('/upload', upload.array('image'), (req, res) => {
 
   const fileNames = req.files.map((file) => file.originalname);
   
-  // Ověření, zda soubory nejsou již uloženy v jiných produktech
   const existingProduct = db.products.find(product => 
     product.nazev === nazev && 
     product.obrazky.length === fileNames.length &&
@@ -91,7 +84,7 @@ app.post('/upload', upload.array('image'), (req, res) => {
       '0'
     );
     const newProduct = {
-      id: (parseInt(maxId) + 1).toString(),  // Ujistěte se, že generujete unikátní ID
+      id: (parseInt(maxId) + 1).toString(),  
       nazev,
       popis,
       obrazky: fileNames,
@@ -140,15 +133,12 @@ app.post('/products', (req, res) => {
     return res.status(400).json({ error: 'Název, popis a obrázky jsou povinné.' });
   }
 
-  // Kontrola, zda existuje produkt se stejným ID
   const existingProductIndex = db.products.findIndex(product => product.id === newProduct.id);
   
   if (existingProductIndex !== -1) {
-    // Pokud existuje produkt se stejným ID, smažeme ho
     db.products.splice(existingProductIndex, 1);
   }
 
-  // Přidání nového produktu
   db.products.push(newProduct);
   writeDb(db);
   cleanDb();
@@ -164,7 +154,7 @@ const cleanDb = () => {
   if (filteredProducts.length !== initialLength) {
     db.products = filteredProducts;
     console.log(`Cleaned db.json: Removed ${initialLength - filteredProducts.length} invalid products`);
-    writeDb(db); // Použijte již definovanou funkci writeDb
+    writeDb(db); 
   } else {
     console.log('No products removed during cleanDb');
   }
@@ -187,14 +177,13 @@ app.put('/products/:id', (req, res) => {
     return res.status(404).json({ error: 'Produkt nenalezen' });
   }
 
-  // Aktualizace produktu
   db.products[productIndex] = { ...db.products[productIndex], ...updatedProduct };
   writeDb(db);
   cleanDb();
-  res.status(200).json(db.products[productIndex]); // Vrátí aktualizovaný produkt
+  res.status(200).json(db.products[productIndex]); 
 });
 
-// Start the server
+
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });

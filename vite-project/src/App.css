@@ -21,7 +21,7 @@ html, body {
   width: 100%; /* Přizpůsobení šířky, aby obrázek překryl celou stránku */
   z-index: 1000; /* Vysoká hodnota pro zajištění překrytí ostatního obsahu */
   pointer-events: none; /* Zajistí, že obrázek nebude interaktivní, pokud nepotřebuješ */
-  max-height: 300vh;
+  height: 400vh;
 }
 
 body {
@@ -45,7 +45,7 @@ header {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 80vh;
+  height: 100vh;
   color: #fff;
   background-color: black; /* fallback barva pro pozadí */
   padding: 20px 0;
@@ -68,7 +68,7 @@ nav ul li {
   height: auto;
 }
 .logo{
-  margin-bottom: 150px;
+  margin-bottom: 80px;
 }
 .Nadpis{
   font-size: 55px;
@@ -161,7 +161,7 @@ header .hero .KonktHeader{
 
 /* Služby */
 #sluzby {
-  padding: 50px 20px;
+  padding: 50px;
   /*background: #f4f4f4;*/
   text-align: center;
 }
@@ -191,7 +191,7 @@ header .hero .KonktHeader{
   background-color: rgb(15, 15, 15);
   color: white;
   flex: 1 1 calc(33.333% - 40px);
-  max-width: calc(25% - 40px);
+  max-width: calc(25% - 1);
 }
 
 
@@ -206,7 +206,7 @@ header .hero .KonktHeader{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 40px;
+  gap: 50px;
 }
 
 .gallery-item {
@@ -301,7 +301,7 @@ footer {
   color: #fff;
   padding: 40px 0;          /* Větší padding pro lepší čitelnost */
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 30px;
 }
 #CreaterTag{
   display: flex;
@@ -381,10 +381,16 @@ footer {
     flex-direction: column;
     text-align: center;
 }
+#GradientImg{
+  height: 750vh;
+}
   /* Úpravy pro služby */
   .services {
     flex-direction: column;   /* Změna rozvržení na sloupec */
     gap: 30px;                /* Menší mezera mezi položkami */
+  }
+  footer{
+    margin-bottom: 30px;
   }
 
   .service {
@@ -597,6 +603,9 @@ footer {
     flex: 1 1 100%; /* Každá služba zabere 100% šířky */
     max-width: 100%; /* Maximální šířka 100% */
   }
+  header{
+    height: 120vh;
+  }
 }
 @media (max-width: 450px) {
   .service {
@@ -604,8 +613,30 @@ footer {
     max-width: 85%;  
     margin: 0 auto;  
   }
-  header{
-    height: 90vh;
+  .logo{
+    margin-top: 50px;
+  }
+  .Nadpis{
+    font-size: 35px;
+  }
+  #sluzby{
+    padding: 0;
+  }
+  .hero h1{
+    font-size: 28px;
+    margin-top: 10px;
+  }
+  .email-text{
+    font-size: 26px;
+  }
+  .phone-text{
+    font-size: 26px;
+  }
+  .header-container nav ul{
+    gap: 18px;
+  }
+  .Nadpis{
+    font-size: 30px;
   }
 }
 }

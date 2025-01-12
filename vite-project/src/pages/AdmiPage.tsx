@@ -47,19 +47,17 @@ const AdminPage = () => {
     if (files && files.length > 0) {
       const newFiles = Array.from(files);
   
-      // Přidání souborů do stavu pro nahrávání
       setSelectedImages((prevSelected) => [...prevSelected, ...newFiles]);
   
-      // Generování náhledů pouze pro nové soubory
       const newFilePreviews = newFiles.map((file) => URL.createObjectURL(file));
       setNewProduct((prevProduct) => ({
         ...prevProduct,
-        obrazky: [...prevProduct.obrazky, ...newFilePreviews], // Přidává pouze náhledy
+        obrazky: [...prevProduct.obrazky, ...newFilePreviews], 
       }));
     } else {
       alert('Žádný obrázek nebyl vybrán.');
     }
-    event.target.value = ''; // Vymazání hodnoty inputu
+    event.target.value = '';
   };
   
   
@@ -114,7 +112,6 @@ const AdminPage = () => {
   };
   
   const handleUpdateProduct = (id: string) => {
-    // Rozdělení obrázků na nové a existující
     const existingImages = newProduct.obrazky.filter((image) => !image.startsWith('blob:'));
     const newFiles = selectedImages;
   
@@ -130,7 +127,7 @@ const AdminPage = () => {
         .then((newImagePaths: string[]) => {
           const updatedProduct = {
             ...newProduct,
-            obrazky: [...existingImages, ...newImagePaths], // Spojení existujících a nových obrázků
+            obrazky: [...existingImages, ...newImagePaths],
           };
   
           fetch(`http://localhost:5003/products/${id}`, {
@@ -152,7 +149,6 @@ const AdminPage = () => {
         })
         .catch((error) => console.error(error.message));
     } else {
-      // Pokud nejsou nové obrázky, aktualizujte pouze textová pole
       const updatedProduct = { ...newProduct, obrazky: existingImages };
   
       fetch(`http://localhost:5003/products/${id}`, {
@@ -185,14 +181,17 @@ const AdminPage = () => {
         setProducts((prevProducts) =>
           prevProducts.filter((product) => product.id !== id)
         );
+        setNewProduct({ id: '', nazev: '', popis: '', obrazky: [] });
+        setSelectedImages([]);
       })
-      .
-catch((error) => console.error('Chyba při odstraňování produktu:', error));
+      .catch((error) => console.error('Chyba při odstraňování produktu:', error));
   };
+  
+
   const handleEditProduct = (product: Product) => {
     setNewProduct({
       ...product,
-      obrazky: [...product.obrazky], // Neprovádějte žádné změny na uložených cestách
+      obrazky: [...product.obrazky], 
     });
   };
   
@@ -257,8 +256,8 @@ catch((error) => console.error('Chyba při odstraňování produktu:', error));
       key={index}
       src={
         image.startsWith('blob:')
-          ? image // Náhled nového obrázku
-          : `http://localhost:5003/uploads/${image}` // Stávající obrázky
+          ? image 
+          : `http://localhost:5003/uploads/${image}`
       }
       alt={`preview-${index}`}
     />

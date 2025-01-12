@@ -2,12 +2,22 @@
   "products": [
     {
       "id": "1",
-      "nazev": "Produkt Test",
-      "popis": "Sigma BEta",
+      "nazev": "Bytvový dům",
+      "popis": "Sigma",
       "obrazky": [
-        "Github2.png",
-        "great-wall-of-china-4k-ch.jpg",
-        "instagram.png"
+        "PraceImg1.png",
+        "PraceImg2.png",
+        "PraceImg3.png"
+      ]
+    },
+    {
+      "id": "2",
+      "nazev": "Bytový dům",
+      "popis": "Ligma",
+      "obrazky": [
+        "PraceImg1.png",
+        "PraceImg2.png",
+        "PraceImg3.png"
       ]
     }
   ]

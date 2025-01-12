@@ -141,7 +141,7 @@ function App() {
 
             <div className="BtnContainer">
               <button id="ZobrazitVseBtn" onClick={() => setShowAll(!showAll)}>
-                {showAll ? 'Zobrazit vše' : 'Zobrazit méně'}
+                {showAll ? 'Zobrazit méně' : 'Zobrazit více'}
               </button>
             </div>
           </section>
