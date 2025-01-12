@@ -640,3 +640,29 @@ footer {
   }
 }
 }
+@media (min-width: 1900px) {
+  #GradientImg{
+height: 300vh;
+  }
+  .gallery{
+    gap: 100px;
+
+  }
+  header{
+    height: 90vh;
+  }
+  .hero h1{
+    margin-bottom: 60px;
+  }
+}
+@media (max-width: 1900px) {
+  #GradientImg{
+height: 340vh;
+  }
+}
+
+@media (max-width: 768px) {
+  html body #GradientImg{
+  height: 500vh;
+  }
+}
