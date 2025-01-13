@@ -54,24 +54,26 @@ function App() {
               <img id="Logo" src={Logo} alt="ALD elektroinstalace" />
               <h1>ALD elektroinstalace</h1>
             </div>
-            <div className="KonktHeader">
-              <p>
-                <a href="mailto:levy@rokytnice.cz" className="email-link" id="email1">
-                  <span className="email-icon">
-                    <img src={iconEmail} alt="Email icon" />
-                  </span>
-                  <span className="email-text">levy@rokytnice.cz</span>
-                </a>
-              </p>
-              <p>
-                <a href="tel:+420774448804" className="phone-link" id="phone1">
-                  <span className="phone-icon">
-                    <img src={IconTel} alt="Phone icon" />
-                  </span>
-                  <span className="phone-text">+420 774 448 804</span>
-                </a>
-              </p>
-              <a href="#kontakt" className="button">Kontaktujte nás!</a>
+            <div className="contact-wrapper">
+              <div className="KonktHeader">
+                <p>
+                  <a href="mailto:levy@rokytnice.cz" className="email-link" id="email1">
+                    <span className="email-icon">
+                      <img src={iconEmail} alt="Email icon" />
+                    </span>
+                    <span className="email-text">levy@rokytnice.cz</span>
+                  </a>
+                </p>
+                <p>
+                  <a href="tel:+420774448804" className="phone-link" id="phone1">
+                    <span className="phone-icon">
+                      <img src={IconTel} alt="Phone icon" />
+                    </span>
+                    <span className="phone-text">+420 774 448 804</span>
+                  </a>
+                </p>
+                <a href="#kontakt" className="button">Kontaktujte nás!</a>
+              </div>
             </div>
           </div>
         </header>
@@ -137,7 +139,7 @@ function App() {
             </div>
 
             <div className="BtnContainer">
-              <button id="ZobrazitVseBtn" onClick={() => setShowAll(!showAll)}>
+              <button id="ZobrazitVseBtn" className='button' onClick={() => setShowAll(!showAll)}>
                 {showAll ? 'Zobrazit méně' : 'Zobrazit více'}
               </button>
             </div>

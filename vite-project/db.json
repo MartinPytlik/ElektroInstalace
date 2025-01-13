@@ -1,4 +1,12 @@
 {
   "products": [
+    {
+      "id": "1",
+      "nazev": "Dům v Letohradě",
+      "popis": "co jsme tam dělali",
+      "obrazky": [
+        "1622531654_Elektroinstalace.jpg"
+      ]
+    }
   ]
 }
