@@ -6,9 +6,6 @@ import iconEmail from '../EmailIcon.png';
 import ZasuvkaIcon from '../ZasuvkaIcon.png';
 import Sipka from '../Sipka.png';
 import Gradient from '../Gradient.png';
-import PraceImg1 from '../PraceImg1.png';
-import PraceImg2 from '../PraceImg2.png';
-import PraceImg3 from '../PraceImg3.png';
 
 // Definuj typ pro produkty
 interface Product {

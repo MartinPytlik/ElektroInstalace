@@ -1,14 +1,4 @@
 {
   "products": [
-    {
-      "id": "1",
-      "nazev": "Bytvový dům",
-      "popis": "Na Rovnosti 2250/8, Praha 3 - žižkov",
-      "obrazky": [
-        "PraceImg1.png",
-        "PraceImg2.png",
-        "PraceImg3.png"
-      ]
-    }
   ]
 }

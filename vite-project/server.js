@@ -4,7 +4,6 @@ import path from 'path';
 import fs from 'fs';
 import cors from 'cors';
 import { fileURLToPath } from 'url';
-import { log } from 'console';
 
 
 const app = express();
