@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import './admin.css';
+import { API_URL } from '../config/config';
 
 interface Product {
   id: string;
@@ -28,7 +29,7 @@ const AdminPage = () => {
   }, [navigate]);
 
   useEffect(() => {
-    fetch('http://localhost:5003/products')
+    fetch(`${API_URL}/products`)
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.error('Chyba při načítání produktů:', error));
@@ -76,7 +77,7 @@ const AdminPage = () => {
       selectedImages.forEach((file) => formData.append('image', file, file.name));
   
       fetch(
-        `http://localhost:5003/upload?nazev=${encodeURIComponent(newProduct.nazev)}&popis=${encodeURIComponent(newProduct.popis)}`,
+        `${API_URL}/upload?nazev=${encodeURIComponent(newProduct.nazev)}&popis=${encodeURIComponent(newProduct.popis)}`,
         {
           method: 'POST',
           body: formData,
@@ -92,7 +93,7 @@ const AdminPage = () => {
           const newId = getMaxId();
           const productWithId = { ...newProduct, id: newId, obrazky: imagePaths };
   
-          fetch('http://localhost:5003/products', {
+          fetch(`${API_URL}/products`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(productWithId),
@@ -119,7 +120,7 @@ const AdminPage = () => {
       const formData = new FormData();
       newFiles.forEach((file) => formData.append('image', file, file.name));
   
-      fetch(`http://localhost:5003/upload`, { method: 'POST', body: formData })
+      fetch(`${API_URL}/upload`, { method: 'POST', body: formData })
         .then((response) => {
           if (!response.ok) throw new Error('Chyba při nahrávání obrázků');
           return response.json();
@@ -130,7 +131,7 @@ const AdminPage = () => {
             obrazky: [...existingImages, ...newImagePaths],
           };
   
-          fetch(`http://localhost:5003/products/${id}`, {
+          fetch(`${API_URL}/products/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(updatedProduct),
@@ -151,7 +152,7 @@ const AdminPage = () => {
     } else {
       const updatedProduct = { ...newProduct, obrazky: existingImages };
   
-      fetch(`http://localhost:5003/products/${id}`, {
+      fetch(`${API_URL}/products/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedProduct),
@@ -174,7 +175,7 @@ const AdminPage = () => {
 
   
   const handleDeleteProduct = (id: string) => {
-    fetch(`http://localhost:5003/products/${id}`, {
+    fetch(`${API_URL}/products/${id}`, {
       method: 'DELETE',
     })
       .then(() => {
@@ -257,7 +258,7 @@ const AdminPage = () => {
       src={
         image.startsWith('blob:')
           ? image 
-          : `http://localhost:5003/uploads/${image}`
+          : `${API_URL}/uploads/${image}`
       }
       alt={`preview-${index}`}
     />

@@ -13,16 +13,17 @@ html, body {
   line-height: 1.6;
   color: #333;
   /*background-color: #000;*/
-  
+  scroll-behavior: smooth; /* Přidá plynulé scrollování pro celou stránku */
 }
 #GradientImg {
-  position: absolute; /* Aby se mohl překrývat nad ostatním obsahem */
-  top: 0; /* Nastavení polohy – začíná od vrchu */
-  left: 0; /* Nastavení polohy – začíná zleva */
-  width: 100%; /* Přizpůsobení šířky, aby obrázek překryl celou stránku */
-  z-index: 1000; /* Vysoká hodnota pro zajištění překrytí ostatního obsahu */
-  pointer-events: none; /* Zajistí, že obrázek nebude interaktivní, pokud nepotřebuješ */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+  pointer-events: none;
   height: 400vh;
+  opacity: 0.6;
 }
 
 body {
@@ -48,10 +49,10 @@ header {
   background-position: center;
   height: 100vh;
   color: #fff;
-  background-color: black; /* fallback barva pro pozadí */
+  background-color: black;
   padding: 20px 0;
-  position: relative; /* Nutné pro z-index */
-  z-index: 1; /* Nastavení vrstvy nad body */
+  position: relative;
+  z-index: 1;
 }
 
 nav{
@@ -67,7 +68,8 @@ nav ul li {
 #Logo {
   width: 230px;
   height: auto;
-  z-index: 99;
+  z-index: 3;
+  position: relative;
 }
 .logo{
   margin-bottom: 80px;
@@ -95,7 +97,13 @@ nav ul {
   align-items: center;    
   font-size: 20px;
   gap: 10px;
-  padding: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.arrow-text:hover {
+  background-color: rgb(255, 255, 255, 0.1);
 }
 
 .arrow-text img {
@@ -147,12 +155,31 @@ nav a {
 .KonktHeader {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 3rem;
   align-items: flex-start;
 }
 
 .KonktHeader p {
   margin: 0;
+}
+
+.contact-links{
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tel-container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
 }
 
 .button {
@@ -163,7 +190,8 @@ nav a {
   text-align: center;
 }
 #ZobrazitVseBtn{
-  margin-top: 60px;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 header .hero .KonktHeader{
   margin-bottom: 200px;
@@ -187,6 +215,8 @@ header .hero .KonktHeader{
   font-weight: bold;
   border-radius: 2px;
   font-size: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 button {
@@ -201,6 +231,12 @@ button {
   font-weight: bold;
   border-radius: 2px;
   font-size: 25px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+}
+
+.hero:hover .button:hover, button:hover { 
+  background: rgb(181, 0, 0); 
 }
 
 /* Služby */
@@ -252,16 +288,18 @@ button {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 50px;
+  gap: 1.5rem;
+  width: min(1500px, 100%);
+  margin: 0 auto 30px auto;
 }
 
 .gallery-item {
-  flex: 1 1 calc(33.333% - 40px);
-  max-width: calc(28% - 40px);
+  max-width: 400px;
 }
 
 .gallery-item img {
   width: 100%;
+  height: 100%;
   display: block;
 }
 
@@ -315,14 +353,15 @@ button {
 }
 
 .email-text {
-  font-size: 30px;   
-  color: white;       /* Nastavíme velikost textu, pokud je to potřeba */
+  font-size: 26px;
+  font-weight: 500;  
+  color: white; 
+  margin-top: -13px;      /* Nastavíme velikost textu, pokud je to potřeba */
 }
 .phone-link {
   display: flex;           /* Použijeme flexbox pro zarovnání */
-  align-items: center;     /* Vertikálně zarovnáme ikonu a text */
+  align-items: start;     /* Vertikálně zarovnáme ikonu a text */
   text-decoration: none; 
-    margin-bottom: 75px;
 }
 
 .phone-icon {
@@ -335,8 +374,10 @@ button {
 }
 
 .phone-text {
-  font-size: 30px;
-  color: white;         /* Nastavíme velikost textu, pokud je to potřeba */
+  font-size: 26px;
+  font-weight: 500;
+  color: white; 
+  margin-top: -4px; /* Nastavíme velikost textu, pokud je to potřeba */
 }
 
 
@@ -398,6 +439,14 @@ footer {
   
 }
 
+.odkaz {
+  text-decoration: none;
+  color: inherit;
+}
+
+.odkaz:hover {
+  text-decoration: underline;
+}
 /* Nastavení kontaktů */
 .contact-email, .contact-phone {
   display: flex;           /* Flexbox pro zarovnání obsahu */
@@ -450,6 +499,7 @@ footer {
     flex-direction: column;   /* Změna rozvržení na sloupec */
     gap: 30px;                /* Menší mezera mezi obrázky */
   }
+  
 
   .gallery-item {
     flex: 1 1 100%;           /* Každý obrázek bude mít 100% šířky */
@@ -522,13 +572,10 @@ footer {
   }
 }
 @media (max-width: 600px) {
-  /* Zajistíme, že vše v header bude na střed */
-  html, body, header {
-    text-align: center;
-  }
+
   header .hero{
-    text-align: center;
     padding: 0;
+    margin: 3rem;
   }
 
   /* Zajistíme, že navigace je správně zarovnaná na střed */
@@ -567,7 +614,6 @@ footer {
   }
   #email1, #phone1{
     text-align: center;
-    justify-content: center;
   }
 }
 
@@ -592,12 +638,8 @@ footer {
   }
 
   /* Ovládání služby pod obrázky */
-  #OvladaniSluzby {
-    display: flex;
-    flex-direction: column;  /* Změna na sloupec pro menší obrazovky */
-    align-items: center;     /* Zarovnání na střed */
-    gap: 20px;               /* Mezera mezi šipkami a popisky */
-    margin-top: 20px;
+  .arrow-text span {
+    display: none;
   }
 
   /* Popis pod obrázky */
@@ -674,10 +716,10 @@ footer {
     margin-top: 10px;
   }
   .email-text{
-    font-size: 26px;
+    font-size: 21px;
   }
   .phone-text{
-    font-size: 26px;
+    font-size: 21px;
   }
   .header-container nav ul{
     gap: 18px;
@@ -692,7 +734,7 @@ footer {
 height: 300vh;
   }
   .gallery{
-    gap: 100px;
+    gap: 2rem;
 
   }
   .hero h1{
@@ -709,4 +751,130 @@ height: 340vh;
   html body #GradientImg{
   height: 500vh;
   }
+}
+
+/* Hamburger menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.hamburger span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin: 3px 0;
+  background: white;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+/* Původní navigace */
+nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  margin-right: 60px;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    margin: 0;
+    padding: 80px 0;
+    transition: 0.3s;
+    z-index: 999;
+  }
+
+  nav.active {
+    right: 0;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  /* Animace pro hamburger menu */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+  }
+}
+
+/* Vlastní scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* Trochu užší pro elegantnější vzhled */
+}
+
+::-webkit-scrollbar-track {
+  background: #0d0d0d; /* Černé pozadí */
+  border-radius: 10px; /* Více zaoblené rohy */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e00; /* Stejná červená jako používáme na stránce */
+  border-radius: 10px; /* Více zaoblené rohy */
+  border: 2px solid #0d0d0d; /* Přidá tenký okraj pro lepší vzhled */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e00; /* Světlejší odstín při najetí myší */
+}
+
+/* Pro Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #e00 #0d0d0d; /* Stejná červená a černá pro Firefox */
+}
+
+/* Přidejte tyto styly pro animaci */
+.gallery-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.gallery-slide {
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateX(100%);
+  position: absolute;
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+}
+
+.gallery-slide.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.gallery-slide.previous {
+  opacity: 0;
+  transform: translateX(-100%);
 }

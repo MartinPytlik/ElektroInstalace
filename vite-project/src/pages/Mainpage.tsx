@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import '../App.css';
 import Logo from '../Logo.png';
 import IconTel from '../PhoneIcon.png';
@@ -35,17 +35,39 @@ function App() {
       });
   }, []);
 
+  const toggleMenu = () => {
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav');
+    
+    hamburger?.classList.toggle('active');
+    nav?.classList.toggle('active');
+  };
+
+  // Přidáme funkci pro zavření menu
+  const closeMenu = () => {
+    const hamburger = document.querySelector('.hamburger');
+    const nav = document.querySelector('nav');
+    
+    hamburger?.classList.remove('active');
+    nav?.classList.remove('active');
+  };
+
   return (
     <>
-      <div id="">
+      <div style={{position: 'relative', overflow: 'hidden'}}>
         <img src={Gradient} alt="" id="GradientImg" />
         <header>
           <div className="header-container">
+            <div className="hamburger" onClick={toggleMenu}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
             <nav>
               <ul>
-                <li><a href="#sluzby">Služby</a></li>
-                <li><a href="#ukazky-praci">Ukázky prací</a></li>
-                <li><a href="#kontakt">Kontakt</a></li>
+                <li><a href="#sluzby" onClick={closeMenu}>Služby</a></li>
+                <li><a href="#ukazky-praci" onClick={closeMenu}>Ukázky prací</a></li>
+                <li><a href="#kontakt" onClick={closeMenu}>Kontakt</a></li>
               </ul>
             </nav>
           </div>
@@ -56,22 +78,24 @@ function App() {
             </div>
             <div className="contact-wrapper">
               <div className="KonktHeader">
-                <p>
-                  <a href="mailto:levy@rokytnice.cz" className="email-link" id="email1">
-                    <span className="email-icon">
-                      <img src={iconEmail} alt="Email icon" />
-                    </span>
-                    <span className="email-text">levy@rokytnice.cz</span>
-                  </a>
-                </p>
-                <p>
-                  <a href="tel:+420774448804" className="phone-link" id="phone1">
-                    <span className="phone-icon">
-                      <img src={IconTel} alt="Phone icon" />
-                    </span>
-                    <span className="phone-text">+420 774 448 804</span>
-                  </a>
-                </p>
+                <div className='contact-links'>
+                  <div>
+                    <a href="mailto:levy@rokytnice.cz" className="email-link" id="email1">
+                      <span className="email-icon">
+                        <img src={iconEmail} alt="Email icon" />
+                      </span>
+                      <span className="email-text">levy@rokytnice.cz</span>
+                    </a>
+                  </div>
+                  <div>
+                    <a href="tel:+420774448804" className="phone-link" id="phone1">
+                      <span className="phone-icon">
+                        <img src={IconTel} alt="Phone icon" />
+                      </span>
+                      <span className="phone-text">+420 774 448 804</span>
+                    </a>
+                  </div>
+                </div>
                 <a href="#kontakt" className="button">Kontaktujte nás!</a>
               </div>
             </div>
@@ -84,27 +108,41 @@ function App() {
             <div className="services">
               <div className="service">
                 <img src={ZasuvkaIcon} className="ZasuvkaIcon" alt="ZasuvkaIcon" />
-                <h3>Úpravy o opravy stávající elektroinstalace</h3>
-                <p>Po inspekci stavu stávající elektroinstalace vyhodnotíme nejlepší možné řešení v daném případě.</p>
+                <h3>Úpravy a opravy stávající elektroinstalace</h3>
+                <p>Provádíme kompletní revize, opravy a modernizace stávajících elektrických rozvodů. Zajistíme bezpečný provoz a optimální funkčnost vaší elektroinstalace.</p>
               </div>
               <div className="service">
                 <img src={ZasuvkaIcon} className="ZasuvkaIcon" alt="ZasuvkaIcon" />
                 <h3>Rozvod nové elektroinstalace</h3>
-                <p>Po inspekci stavu stávající elektroinstalace vyhodnotíme nejlepší možné řešení v daném případě.</p>
+                <p>Realizujeme kompletní elektroinstalace na klíč v novostavbách i při rekonstrukcích. Od návrhu až po finální zapojení, včetně rozvaděčů a zabezpečovacích systémů.</p>
               </div>
               <div className="service">
                 <img src={ZasuvkaIcon} className="ZasuvkaIcon" alt="ZasuvkaIcon" />
                 <h3>Úpravy ve stávajících interiérech</h3>
-                <p>Po inspekci stavu stávající elektroinstalace vyhodnotíme nejlepší možné řešení v daném případě.</p>
+                <p>Specializujeme se na citlivé úpravy elektroinstalace v obývaných prostorech. Minimalizujeme zásahy do interiéru při zachování maximální funkčnosti a bezpečnosti.</p>
               </div>
             </div>
           </section>
 
           <section id="ukazky-praci">
-            <h2 className="Nadpis">UKÁZKY PRACÍ</h2>
+            <div id="OvladaniSluzby">
+              <span className="arrow-text" onClick={() => setCurrentProductIndex((prevIndex) => prevIndex === 0 ? productsData.length - 1 : prevIndex - 1)}>
+                <img src={Sipka} alt="Šipka" id="SipkaRotate" />
+                <span>předchozí zakázka</span>
+              </span>
+
+              <h2 className="Nadpis">UKÁZKY PRACÍ</h2>
+
+              <span className="arrow-text" onClick={() => setCurrentProductIndex((prevIndex) => prevIndex === productsData.length - 1 ? 0 : prevIndex + 1)}>
+                <span>další zakázka</span>
+                <img src={Sipka} alt="Šipka" />
+              </span>
+            </div>
             <div id="Popis">
   <div className="gallery">
-    {productsData.length === 0 ? (
+    {isLoading ? (
+      <div>Načítání...</div>
+    ) : productsData.length === 0 ? (
       <div>Žádné zakázky k dispozici</div>
     ) : (
       (showAll ? productsData : [productsData[currentProductIndex]]).map((product) => (
@@ -125,22 +163,9 @@ function App() {
   </div>
 </div>
 
-
-            <div id="OvladaniSluzby">
-              <span className="arrow-text" onClick={() => setCurrentProductIndex((prevIndex) => prevIndex === 0 ? productsData.length - 1 : prevIndex - 1)}>
-                <img src={Sipka} alt="Šipka" id="SipkaRotate" />
-                <span>předchozí zakázka</span>
-              </span>
-
-              <span className="arrow-text" onClick={() => setCurrentProductIndex((prevIndex) => prevIndex === productsData.length - 1 ? 0 : prevIndex + 1)}>
-                další zakázka
-                <img src={Sipka} alt="Šipka" />
-              </span>
-            </div>
-
             <div className="BtnContainer">
               <button id="ZobrazitVseBtn" className='button' onClick={() => setShowAll(!showAll)}>
-                {showAll ? 'Zobrazit méně' : 'Zobrazit více'}
+                {showAll ? 'Zobrazit méně' : 'Zobrazit vše'}
               </button>
             </div>
           </section>
@@ -153,19 +178,22 @@ function App() {
                 <p>Zahradní 251,<br />517 61 Rokytnice v Orlických horách</p>
               </div>
               <div className="contact-right">
-                <a href="mailto:levy@rokytnice.cz" className="email-link">
+                <a href="mailto:levy@rokytnice.cz" className="email-link odkaz">
                   <span className="email-icon">
                     <img src={iconEmail} alt="Email icon" />
                   </span>
                   <span className="email-text">levy@rokytnice.cz</span>
                 </a>
                 <p>
-                  <a href="tel:+420774448804" className="phone-link">
+                  <div className="phone-link">
                     <span className="phone-icon">
                       <img src={IconTel} alt="Phone icon" />
                     </span>
-                    <span className="phone-text">+420 774 448 804</span>
-                  </a>
+                    <div className="tel-container">
+                    <a href="tel:+420774448804" className="phone-text odkaz">+420 774 448 804</a>
+                    <a href="tel:+420777081860" className="phone-text odkaz">+420 777 081 860</a>
+                    </div>
+                  </div>
                 </p>
               </div>
             </div>
@@ -206,7 +234,7 @@ function App() {
           </div>
         </footer>
         <div id="CreaterTag">
-          <p>@ 2024 | Ondřej Krejčí │ Martin Pytlík</p>
+          <p>© 2025 | <a href="https://ondrejkrejci.com" className="odkaz">Ondřej Krejčí</a> & Martin Pytlík</p>
         </div>
       </div>
     </>
